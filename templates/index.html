@@ -9,11 +9,12 @@
     <h2 class="text-center">Welcome to the Clothing Store</h2>
     <div class="row mt-4">
         {% for product in products %}
+        <img src="Sweatshirt 1.jpeg" class="card-img-top" alt="Sweatshirt">
         <div class="col-md-4 mb-3">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">{{ product.name }}</h5>
-                    <p class="card-text">${{ product.price }}</p>
+                    <h5 class="card-title">Sweatshirt</h5>
+                    <p class="card-text">GHC150</p>
                     <a href="/product/{{ product.id }}" class="btn btn-primary">View</a>
                 </div>
             </div>
