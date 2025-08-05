@@ -12,7 +12,7 @@ from oauth2client.service_account import ServiceAccountCredentials
 app = Flask(__name__)
 app.secret_key = 'supersecret'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite3'
-app.config['UPLOADED_PHOTOS_DEST'] = 'static/uploads'
+app.config['UPLOADED_PHOTOS_DEST'] = 'static/images'
 photos = UploadSet('photos', IMAGES)
 configure_uploads(app, photos)
 
