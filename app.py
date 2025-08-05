@@ -11,8 +11,12 @@ from oauth2client.service_account import ServiceAccountCredentials
 
 app = Flask(__name__)
 app.secret_key = 'supersecret'
+
+# Configurations
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite3'
 app.config['UPLOADED_PHOTOS_DEST'] = 'static/images'
+
+# Uploads
 photos = UploadSet('photos', IMAGES)
 configure_uploads(app, photos)
 
@@ -21,8 +25,11 @@ login_manager = LoginManager()
 login_manager.login_view = 'auth.login'
 login_manager.init_app(app)
 
-db.init_app(app)
+# Register Blueprints
 app.register_blueprint(auth)
+
+# DB init
+db.init_app(app)
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -31,8 +38,10 @@ def load_user(user_id):
 def is_admin():
     return current_user.is_authenticated and current_user.username == 'admin'
 
+# Routes
+
 @app.route('/')
-def index():
+def home():
     products = Product.query.all()
     return render_template('index.html', products=products)
 
@@ -49,13 +58,13 @@ def checkout():
         file = request.files.get('proof')
 
         filename = None
-        if file:
+        if file and file.filename != '':
             filename = secure_filename(file.filename)
             photos.save(file, name=filename)
 
-        # Send order to Google Sheets
         log_order_to_sheets(name, method, filename)
         return render_template('thank_you.html', name=name, method=method, filename=filename)
+
     return render_template('checkout.html')
 
 @app.route('/admin')
@@ -75,7 +84,7 @@ def add_product():
         name = request.form['name']
         description = request.form['description']
         price = float(request.form['price'])
-        image = request.form['image']
+
         product = Product(name=name, description=description, price=price)
         db.session.add(product)
         db.session.commit()
@@ -92,16 +101,7 @@ def delete_product(id):
     db.session.commit()
     return redirect('/admin')
 
-products = [
-    {
-        "id": 1,
-        "name": "Hoodie",
-        "price": 190,
-        "image": "images/hoodie_1.jpg"
-    }
-]
-
-# Google Sheets Logging
+# Google Sheets Logger
 def log_order_to_sheets(name, method, filename):
     scope = ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive']
     creds = ServiceAccountCredentials.from_json_keyfile_name('credentials.json', scope)
@@ -109,8 +109,8 @@ def log_order_to_sheets(name, method, filename):
     sheet = client.open('Orders').sheet1
     sheet.append_row([name, method, filename or 'None'])
 
+# Run app
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()
     app.run(debug=True)
-
