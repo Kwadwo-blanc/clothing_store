@@ -84,7 +84,7 @@ def add_product():
         name = request.form['name']
         description = request.form['description']
         price = float(request.form['price'])
-
+        image = db.Column(db.String(100))
         product = Product(name=name, description=description, price=price)
         db.session.add(product)
         db.session.commit()
