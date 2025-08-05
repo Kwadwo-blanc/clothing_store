@@ -75,6 +75,7 @@ def add_product():
         name = request.form['name']
         description = request.form['description']
         price = float(request.form['price'])
+        image = request.form['image']
         product = Product(name=name, description=description, price=price)
         db.session.add(product)
         db.session.commit()
@@ -99,11 +100,6 @@ products = [
         "image": "images/hoodie_1.jpg"
     }
 ]
-
-@app.route('/')
-def home():
-    return render_template('index.html', products=products)
-
 
 # Google Sheets Logging
 def log_order_to_sheets(name, method, filename):
