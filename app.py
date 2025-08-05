@@ -92,9 +92,12 @@ def delete_product(id):
     return redirect('/admin')
 
 products = [
-    {'id': 1, 'name': 'Sweatshirt', 'price': 150, 'image': 'Sweatshirt1.jpeg'},
-    {'id': 2, 'name': 'Hoodie', 'price': 180, 'image': 'hoodie1.jpeg'},
-    # add more...
+    {
+        "id": 1,
+        "name": "Sweatshirt",
+        "price": 150,
+        "image": "images/Sweatshirt_1.jpeg"
+    }
 ]
 
 @app.route('/')
