@@ -92,7 +92,7 @@ def delete_product(id):
     return redirect('/admin')
 
 products = [
-    {'id': 1, 'name': 'Sweatshirt', 'price': 150, 'image': 'sweatshirt1.jpeg'},
+    {'id': 1, 'name': 'Sweatshirt', 'price': 150, 'image': 'Sweatshirt1.jpeg'},
     {'id': 2, 'name': 'Hoodie', 'price': 180, 'image': 'hoodie1.jpeg'},
     # add more...
 ]
