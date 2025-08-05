@@ -91,6 +91,17 @@ def delete_product(id):
     db.session.commit()
     return redirect('/admin')
 
+products = [
+    {'id': 1, 'name': 'Sweatshirt', 'price': 150, 'image': 'sweatshirt1.jpeg'},
+    {'id': 2, 'name': 'Hoodie', 'price': 180, 'image': 'hoodie1.jpeg'},
+    # add more...
+]
+
+@app.route('/')
+def home():
+    return render_template('index.html', products=products)
+
+
 # Google Sheets Logging
 def log_order_to_sheets(name, method, filename):
     scope = ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive']
