@@ -1,0 +1,28 @@
+/* style.css - Basic styling using Bootstrap overrides */
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f8f9fa;
+}
+
+.navbar {
+  background-color: #fff;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.product-card {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: none;
+}
+
+.product-card img {
+  height: 200px;
+  object-fit: cover;
+}
+
+.footer {
+  background-color: #343a40;
+  color: white;
+  padding: 2rem 0;
+  text-align: center;
+}
