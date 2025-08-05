@@ -94,9 +94,9 @@ def delete_product(id):
 products = [
     {
         "id": 1,
-        "name": "Sweatshirt",
-        "price": 150,
-        "image": "images/Sweatshirt_1.jpeg"
+        "name": "Hoodie",
+        "price": 190,
+        "image": "images/hoodie_1.jpg"
     }
 ]
 
