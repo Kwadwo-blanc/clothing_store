@@ -98,12 +98,10 @@ body {
   height: 100%;
   transition: .5s ease;
 }
-
 .container:hover .overlay {
   width: 100%;
   left: 0;
 }
-
 .text {
   color: white;
   font-size: 20px;
@@ -115,7 +113,6 @@ body {
   transform: translate(-50%, -50%);
   white-space: nowrap;
 }
-
 .footer {
   background-color: #343a40;
   color: white;
