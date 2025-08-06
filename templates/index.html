@@ -15,9 +15,13 @@
             <div class="col">
                 <div class="card h-100">
                     <img src="{{ url_for('static', filename='images/Sweatshirt_1.jpeg') }}" class="card-img-top" alt="Sweatshirt 1">
+                     <div class="product-overlay">
+                        <h3>Sweatshirt_1</h3>
+                        <p class="price">${{ '%.2f' | format(190) }}</p>
                     <div class="card-body">
                         <h5 class="card-title">Sweatshirt 1</h5>
                         <p class="card-text">A cozy and stylish sweatshirt for everyday wear.</p>
+                    </div>
                     </div>
                 </div>
             </div>
