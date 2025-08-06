@@ -76,6 +76,23 @@ body {
   margin-top: 0.5rem;
 }
 
+.container {
+  position: relative;
+}
+
+.topleft {
+  position: absolute;
+  top: 8px;
+  left: 12px;
+  font-size: 20px;
+}
+
+img { 
+  width: 100%;
+  height: auto;
+  opacity: 0.5;
+}
+
 .footer {
   background-color: #343a40;
   color: white;
